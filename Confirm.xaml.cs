@@ -2,35 +2,65 @@
 
 namespace JogoGourmet
 {
-    /// <summary>
-    /// Interaction logic for Confirm.xaml
-    /// </summary>
     public partial class Confirm : Window
     {
-        private Dictionary<int, string> perguntas;
+        private Dictionary<string, List<string>> perguntasD;
         private int indicePergunta = 0;
-        public Confirm(Dictionary<int, string> perguntas)
+        MainWindow parent;
+        public Confirm(MainWindow caller ,Dictionary<string, List<string>> perguntas)
         {
             InitializeComponent();
-            txtPergunta.Text = perguntas[indicePergunta];
+            txtPergunta.Text = perguntas.First().Key;
+            perguntasD = perguntas;
+            parent = caller;
+        }
+
+        private void VerificarVinculo()
+        {
+
+            if (VerificarVinculoExistente("","w"))
+            {
+                Console.WriteLine("Existe vínculo entre as perguntas.");
+            }
+            else
+            {
+                Acerto adicionaForm = new(parent);
+                adicionaForm.Show();
+            }
+        }
+
+        private bool VerificarVinculoExistente(string pergunta1, string pergunta2)
+        {
+            if (perguntasD.ContainsKey(pergunta1) && perguntasD.ContainsKey(pergunta2))
+            {
+                foreach (var palavra in perguntasD[pergunta2])
+                {
+                    if (perguntasD[pergunta1].Contains(palavra))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         private void btnSim_Click(object sender, RoutedEventArgs e)
         {
-            Acerto adicionaForm = new ();
-            adicionaForm.Show();
+            VerificarVinculo();
         }
 
         private void btnNao_Click(object sender, RoutedEventArgs e)
         {
             indicePergunta++;
-            if (indicePergunta < perguntas.Count)
+            if (indicePergunta < perguntasD.Count)
             {
-                txtPergunta.Text = perguntas[indicePergunta];
+                txtPergunta.Text = perguntasD.ElementAt(indicePergunta).Key;
             }
             else
             {
-                CriaPrato adicionaForm = new CriaPrato();
+                CriaPrato adicionaForm = new CriaPrato(parent,perguntasD);
+                this.Close();
                 adicionaForm.Show();
             }
         }

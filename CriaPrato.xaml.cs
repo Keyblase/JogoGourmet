@@ -1,38 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace JogoGourmet
 {
-    /// <summary>
-    /// Interaction logic for CriaPrato.xaml
-    /// </summary>
     public partial class CriaPrato : Window
     {
-        public CriaPrato()
+        private Dictionary<string, List<string>> perguntasD;
+        MainWindow parent;
+        public CriaPrato(MainWindow caller, Dictionary<string, List<string>> perguntas)
         {
             InitializeComponent();
-            DefaultMessage.Text = "Qual prato você pensou?";
+            DefaultMessage.Content = "Qual prato você pensou?";
+            perguntasD = perguntas;
+            parent = caller;
         }
 
         private void ResponseButton_Click(object sender, RoutedEventArgs e)
         {
-
+            perguntasD.Add($"O prato que pensou é {alimentoEscolhido.Text}",new List<string>() { alimentoEscolhido.Text });
+            this.Close();
+            ComparaPrato inicioForm = new(parent,perguntasD, alimentoEscolhido.Text);
+            inicioForm.Show();
         }
 
         private void ResponseCancelaButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
+            parent.Show();
         }
     }
 }

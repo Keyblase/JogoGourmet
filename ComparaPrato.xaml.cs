@@ -2,25 +2,40 @@
 
 namespace JogoGourmet
 {
-    /// <summary>
-    /// Interaction logic for ComparaPrato.xaml
-    /// </summary>
     public partial class ComparaPrato : Window
     {
-        public ComparaPrato(string comida)
+        private Dictionary<string, List<string>> perguntasD;
+        private string comidaEscolhida = "";
+        MainWindow parent;
+        public ComparaPrato(MainWindow caller, Dictionary<string, List<string>> perguntas,string comida)
         {
             InitializeComponent();
-            CompareMessage.Text = $"{comida} é ______ mas Bolo de Chocolate não.";
+            perguntasD = perguntas;
+            comidaEscolhida = comida;
+            CompareMessage.Content = $"{comida} é ___________ mas Bolo de Chocolate não.";
+            parent = caller;
         }
 
         private void ResponseButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (perguntasD.ContainsKey($"O prato que pensou é {comidaEscolhida}"))
+            {
+                foreach (var palavra in perguntasD[$"O prato que pensou é {comidaEscolhida}"])
+                {
+                    if (!perguntasD[$"O prato que pensou é {comidaEscolhida}"].Contains(palavra))
+                    {
+                        perguntasD[$"O prato que pensou é {comidaEscolhida}"].Add(palavra);
+                    }
+                }
+            }
+            this.Close();
+            parent.Show();
         }
 
         private void ResponseCancelarButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
+            parent.Show();
         }
     }
 }

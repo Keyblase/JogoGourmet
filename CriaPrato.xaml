@@ -12,9 +12,9 @@
             <ColumnDefinition Width="120*"/>
         </Grid.ColumnDefinitions>
         <Image Source="/interrogacao.jpg" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Margin="3,3,0,0" />
-        <TextBox x:Name="DefaultMessage" HorizontalAlignment="Left" Margin="32,25,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="224" Grid.ColumnSpan="2"/>
+        <Label x:Name="DefaultMessage" HorizontalAlignment="Left" Margin="32,25,0,0"  VerticalAlignment="Top" Width="224" Grid.ColumnSpan="2"/>
         <Button x:Name="ResponseBtn" Content="OK" HorizontalAlignment="Left" Margin="88,68,0,0" VerticalAlignment="Top" Height="26" Width="56" Click="ResponseButton_Click"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="32,46,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="224"/>
+        <TextBox x:Name="alimentoEscolhido"  HorizontalAlignment="Left" Margin="32,46,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="224"/>
         <Button x:Name="ResponseCancelaBtn" Content="Cancelar" HorizontalAlignment="Left" Margin="172,68,0,0" VerticalAlignment="Top" Height="26" Width="56" Click="ResponseCancelaButton_Click" Grid.ColumnSpan="2"/>
 
     </Grid>

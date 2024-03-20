@@ -11,7 +11,7 @@
             <ColumnDefinition Width="266*"/>
             <ColumnDefinition Width="120*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="InitialMessage" HorizontalAlignment="Left" Margin="32,25,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="224" Grid.ColumnSpan="2"/>
+        <Label x:Name="InitialMessage" HorizontalAlignment="Left" Margin="32,25,0,0" VerticalAlignment="Top" Width="224" Grid.ColumnSpan="2"/>
         <Button x:Name="ResponseBtn" Content="OK" HorizontalAlignment="Left" Margin="105,68,0,0" VerticalAlignment="Top" Height="26" Width="56" Click="ResponseButton_Click"/>
 
     </Grid>

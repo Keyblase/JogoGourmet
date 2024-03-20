@@ -4,16 +4,17 @@ namespace JogoGourmet
 {
     public partial class Acerto : Window
     {
-        public Acerto()
+        MainWindow parent;
+        public Acerto(MainWindow caller)
         {
             InitializeComponent();
             AcertoMessage.Content = "Acertei denovo!";
+            parent = caller;
         }
 
         private void ResponseButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow inicioForm = new ();
-            inicioForm.Show();
+            parent.Show();
         }
     }
 }

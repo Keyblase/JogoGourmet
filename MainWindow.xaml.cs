@@ -1,14 +1,13 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 
 namespace JogoGourmet
 {
     public partial class MainWindow : Window
     {
-        private Dictionary<int, string> perguntas = new Dictionary<int, string>
+        private Dictionary<string, List<string>> dictionary = new()
         {
-            { 0, "O prato que pensou é Massa?" },
-            { 1, "O prato que pensou é Bolo de chocolate?" }
+            { "O prato que pensou é Massa?", new List<string> { "Lasanha" } },
+            { "O prato que pensou é Bolo de chocolate?", new List<string> { "Bolo de Chocolate" } },
         };
 
         public MainWindow()
@@ -19,12 +18,13 @@ namespace JogoGourmet
 
         private void LoadMessages()
         {
-            InitialMessage.Text = "Pense em um prato que gosta";
+            InitialMessage.Content = "Pense em um prato que gosta";
         }
 
         private void ResponseButton_Click(object sender, RoutedEventArgs e)
         {
-            Confirm perguntaForm = new(perguntas);
+            Confirm perguntaForm = new(this,dictionary);
+            this.Hide();
             perguntaForm.Show();
         }
     }
