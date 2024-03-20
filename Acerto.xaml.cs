@@ -14,6 +14,7 @@ namespace JogoGourmet
 
         private void ResponseButton_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
             parent.Show();
         }
     }

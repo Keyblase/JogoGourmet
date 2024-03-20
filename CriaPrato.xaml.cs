@@ -16,7 +16,6 @@ namespace JogoGourmet
 
         private void ResponseButton_Click(object sender, RoutedEventArgs e)
         {
-            perguntasD.Add($"O prato que pensou é {alimentoEscolhido.Text}",new List<string>() { alimentoEscolhido.Text });
             this.Close();
             ComparaPrato inicioForm = new(parent,perguntasD, alimentoEscolhido.Text);
             inicioForm.Show();
