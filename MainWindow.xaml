@@ -1,0 +1,18 @@
+﻿<Window x:Class="JogoGourmet.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JogoGourmet"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="160" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="266*"/>
+            <ColumnDefinition Width="120*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="InitialMessage" HorizontalAlignment="Left" Margin="32,25,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="224" Grid.ColumnSpan="2"/>
+        <Button x:Name="ResponseBtn" Content="OK" HorizontalAlignment="Left" Margin="105,68,0,0" VerticalAlignment="Top" Height="26" Width="56" Click="ResponseButton_Click"/>
+
+    </Grid>
+</Window>
