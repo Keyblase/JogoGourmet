@@ -21,21 +21,25 @@ namespace JogoGourmet
 
         private void ResponseButton_Click(object sender, RoutedEventArgs e)
         {
-            perguntasD.Add($"O prato que pensou é {(!string.IsNullOrEmpty(txtNomeVinculoAlimento.Text) ? txtNomeVinculoAlimento.Text : "null")}?", new List<string>() { (!string.IsNullOrEmpty(comidaEscolhida) ? comidaEscolhida : "null") });
+            AdicionaVinculoPrato();
             this.Hide();
             parent.Show();
         }
 
         private void ResponseCancelarButton_Click(object sender, RoutedEventArgs e)
         {
-            perguntasD.Add($"O prato que pensou é {(!string.IsNullOrEmpty(txtNomeVinculoAlimento.Text) ? txtNomeVinculoAlimento.Text : "null")}?", new List<string>() { (!string.IsNullOrEmpty(comidaEscolhida) ? comidaEscolhida : "null") });
+            AdicionaVinculoPrato();
             this.Hide();
             parent.Show();
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            perguntasD.Add($"O prato que pensou é {(!string.IsNullOrEmpty(txtNomeVinculoAlimento.Text) ? txtNomeVinculoAlimento.Text : "null")}?", new List<string>() { (!string.IsNullOrEmpty(comidaEscolhida) ? comidaEscolhida : "null") });
+            AdicionaVinculoPrato();
             parent.Show();
+        }
+        public void AdicionaVinculoPrato()
+        {
+            perguntasD.Add($"O prato que pensou é {(!string.IsNullOrEmpty(txtNomeVinculoAlimento.Text) ? txtNomeVinculoAlimento.Text : "null")}?", new List<string>() { (!string.IsNullOrEmpty(comidaEscolhida) ? comidaEscolhida : "null") });
         }
     }
 }

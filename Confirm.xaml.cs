@@ -30,20 +30,17 @@ namespace JogoGourmet
             {
                 string pergunta = perguntasD.Keys.ElementAt(indiceAtual);
 
-                // Se estivermos mostrando os valores associados, exibimos os valores
                 if (mostrandoValores)
                 {
                     txtPergunta.Text = valoresAssociados.Any() ? $"O prato que pensou é {valoresAssociados.First()}?" : "Não há pratos associados a esta pergunta.";
                 }
                 else
                 {
-                    // Mostra a pergunta original
                     txtPergunta.Text = pergunta;
                 }
             }
             else
             {
-                // Todas as perguntas já foram mostradas
                 CriaPrato adicionaForm = new CriaPrato(parent, perguntasD);
                 this.Close();
                 adicionaForm.Show();
@@ -54,13 +51,11 @@ namespace JogoGourmet
         {
             if (!mostrandoValores && perguntasD.ContainsKey(txtPergunta.Text) && perguntasD[txtPergunta.Text].Any())
             {
-                // Se houver valores associados à pergunta, mostramos os valores
                 mostrandoValores = true;
                 valoresAssociados = perguntasD[txtPergunta.Text];
             }
             else
             {
-                // Senão, verificamos o vínculo
                 VerificarVinculo();
             }
             MostrarPerguntaAtual();
@@ -70,12 +65,10 @@ namespace JogoGourmet
         {
             if (mostrandoValores && valoresAssociados.Count > 1)
             {
-                // Se houver mais valores associados, mostramos o próximo valor
                 valoresAssociados.RemoveAt(0);
             }
             else
             {
-                // Senão, passamos para a próxima pergunta
                 mostrandoValores = false;
                 indiceAtual++;
             }
