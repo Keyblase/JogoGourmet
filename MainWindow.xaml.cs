@@ -7,7 +7,7 @@ namespace JogoGourmet
         private Dictionary<string, List<string>> dictionary = new()
         {
             { "O prato que pensou é Massa?", new List<string> { "Lasanha" } },
-            { "O prato que pensou é Bolo de chocolate?", new List<string> { "Bolo de Chocolate" } },
+            { "O prato que pensou é Bolo de chocolate?", new List<string> { } },
         };
 
         public MainWindow()

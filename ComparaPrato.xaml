@@ -14,7 +14,7 @@
         <Image Source="/interrogacao.jpg" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Margin="3,3,0,0" />
         <Label Content="Label" x:Name="CompareMessage" HorizontalAlignment="Left" Margin="32,25,0,0"  VerticalAlignment="Top" Width="224" Grid.ColumnSpan="2"/>
         <Button x:Name="ResponseBtn" Content="OK" HorizontalAlignment="Left" Margin="88,68,0,0" VerticalAlignment="Top" Height="26" Width="56" Click="ResponseButton_Click"/>
-        <TextBox x:Name="txtNomeVinculoAlimento"  HorizontalAlignment="Left" Margin="32,46,0,0" VerticalAlignment="Top" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" Width="224"/>
+        <TextBox x:Name="txtNomeVinculoAlimento"  HorizontalAlignment="Left" Margin="32,46,0,0" VerticalAlignment="Top" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" Width="262"/>
         <Button x:Name="ResponseCancelBtn" Content="Cancelar" HorizontalAlignment="Left" Margin="166,68,0,0" VerticalAlignment="Top" Height="26" Width="56" Click="ResponseCancelarButton_Click" Grid.ColumnSpan="2"/>
 
     </Grid>

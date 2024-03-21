@@ -8,7 +8,7 @@
         Title="Confirm" Height="160" Width="300">
     <Grid>
         <Image Source="/interrogacao.jpg" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="42" />
-        <TextBlock x:Name="txtPergunta" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="57,49,0,0" Width="198" />
+        <TextBlock x:Name="txtPergunta" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="57,49,0,0" Width="240" />
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,40,0,0">
             <Button x:Name="btnSim" Content="Sim" Width="100" Click="btnSim_Click" />
             <Button x:Name="btnNao" Content="Não" Width="100" Click="btnNao_Click" Margin="10,0,0,0" />
