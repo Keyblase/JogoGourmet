@@ -33,7 +33,7 @@ namespace JogoGourmet
                 // Se estivermos mostrando os valores associados, exibimos os valores
                 if (mostrandoValores)
                 {
-                    txtPergunta.Text = valoresAssociados.Any() ? valoresAssociados.First() : "Não há pratos associados a esta pergunta.";
+                    txtPergunta.Text = valoresAssociados.Any() ? $"O prato que pensou é {valoresAssociados.First()}?" : "Não há pratos associados a esta pergunta.";
                 }
                 else
                 {
