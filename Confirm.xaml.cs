@@ -42,7 +42,7 @@ namespace JogoGourmet
             else
             {
                 CriaPrato adicionaForm = new CriaPrato(parent, perguntasD);
-                this.Close();
+                this.Hide();
                 adicionaForm.Show();
             }
         }
@@ -61,7 +61,7 @@ namespace JogoGourmet
             MostrarPerguntaAtual();
         }
 
-        private void btnNao_Click(object sender, RoutedEventArgs e)
+        private void btnNao_Click(object sender, RoutedEventArgs? e)
         {
             if (mostrandoValores && valoresAssociados.Count > 1)
             {
@@ -73,6 +73,11 @@ namespace JogoGourmet
                 indiceAtual++;
             }
             MostrarPerguntaAtual();
+        }
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            btnNao_Click(sender, null);
         }
 
         #region VerificarVinculo

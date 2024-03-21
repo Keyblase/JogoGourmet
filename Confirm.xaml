@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JogoGourmet"
         mc:Ignorable="d"
-        Title="Confirm" Height="160" Width="300">
+        Title="Confirm" Height="160" Width="300" Closing="Window_Closing">
     <Grid>
         <Image Source="/interrogacao.jpg" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="42" />
         <TextBlock x:Name="txtPergunta" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="57,49,0,0" Width="240" />
