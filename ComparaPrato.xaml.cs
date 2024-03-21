@@ -1,13 +1,15 @@
-﻿using System.Windows;
+﻿using System.Collections.Specialized;
+using System.Windows;
 
 namespace JogoGourmet
 {
     public partial class ComparaPrato : Window
     {
-        private Dictionary<string, List<string>> perguntasD;
+        private OrderedDictionary perguntasD = new OrderedDictionary();
         private string comidaEscolhida = "";
         MainWindow parent;
-        public ComparaPrato(MainWindow caller, Dictionary<string, List<string>> perguntas, string comida)
+
+        public ComparaPrato(MainWindow caller, OrderedDictionary perguntas, string comida)
         {
             InitializeComponent();
             perguntasD = perguntas;
@@ -30,14 +32,23 @@ namespace JogoGourmet
             this.Hide();
             parent.Show();
         }
+
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             AdicionaVinculoPrato();
             parent.Show();
         }
+
         public void AdicionaVinculoPrato()
         {
+            // Primeiro, remova a última chave (Bolo de chocolate) para adicionar o novo elemento no meio
+            perguntasD.RemoveAt(perguntasD.Count - 1);
+
+            // Adicione o novo elemento
             perguntasD.Add($"O prato que pensou é {(!string.IsNullOrEmpty(txtNomeVinculoAlimento.Text) ? txtNomeVinculoAlimento.Text : "null")}?", new List<string>() { (!string.IsNullOrEmpty(comidaEscolhida) ? comidaEscolhida : "null") });
+
+            // Re-adicione a chave do Bolo de chocolate no final
+            perguntasD.Add("O prato que pensou é Bolo de chocolate?", new List<string>());
         }
     }
 }

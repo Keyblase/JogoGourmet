@@ -1,16 +1,18 @@
-﻿using System.Windows;
+﻿using System.Collections;
+using System.Collections.Specialized;
+using System.Windows;
 
 namespace JogoGourmet
 {
     public partial class Confirm : Window
     {
-        private Dictionary<string, List<string>> perguntasD;
+        private OrderedDictionary perguntasD;
         private List<string> valoresAssociados;
         private int indiceAtual = 0;
         private MainWindow parent;
         private bool mostrandoValores = false;
 
-        public Confirm(MainWindow caller, Dictionary<string, List<string>> perguntas)
+        public Confirm(MainWindow caller, OrderedDictionary perguntas)
         {
             InitializeComponent();
             perguntasD = perguntas;
@@ -28,15 +30,24 @@ namespace JogoGourmet
         {
             if (indiceAtual < perguntasD.Count)
             {
-                string pergunta = perguntasD.Keys.ElementAt(indiceAtual);
+                int index = 0;
+                foreach (DictionaryEntry entry in perguntasD)
+                {
+                    if (index == indiceAtual)
+                    {
+                        string? pergunta = entry.Key as string;
 
-                if (mostrandoValores)
-                {
-                    txtPergunta.Text = valoresAssociados.Any() ? $"O prato que pensou é {valoresAssociados.First()}?" : "Não há pratos associados a esta pergunta.";
-                }
-                else
-                {
-                    txtPergunta.Text = pergunta;
+                        if (mostrandoValores)
+                        {
+                            txtPergunta.Text = valoresAssociados.Any() ? $"O prato que pensou é {valoresAssociados.First()}?" : "Não há pratos associados a esta pergunta.";
+                        }
+                        else
+                        {
+                            txtPergunta.Text = pergunta;
+                        }
+                        break;
+                    }
+                    index++;
                 }
             }
             else
@@ -49,10 +60,10 @@ namespace JogoGourmet
 
         private void btnSim_Click(object sender, RoutedEventArgs e)
         {
-            if (!mostrandoValores && perguntasD.ContainsKey(txtPergunta.Text) && perguntasD[txtPergunta.Text].Any())
+            if (!mostrandoValores && perguntasD.Contains(txtPergunta.Text as object) && ((List<string>)perguntasD[txtPergunta.Text]).Any())
             {
                 mostrandoValores = true;
-                valoresAssociados = perguntasD[txtPergunta.Text];
+                valoresAssociados = (List<string>)perguntasD[txtPergunta.Text];
             }
             else
             {
@@ -86,13 +97,13 @@ namespace JogoGourmet
             if (VerificarVinculoExistente(txtPergunta.Text))
             {
                 this.Hide();
-                Confirm perguntaForm = new(parent, perguntasD);
+                Confirm perguntaForm = new Confirm(parent, perguntasD);
                 perguntaForm.Show();
             }
             else
             {
                 this.Hide();
-                Acerto adicionaForm = new(parent);
+                Acerto adicionaForm = new Acerto(parent);
                 adicionaForm.Show();
             }
         }
@@ -103,9 +114,8 @@ namespace JogoGourmet
             {
                 return false;
             }
-            return perguntasD.ContainsKey(pergunta) && perguntasD[pergunta].Any();
+            return perguntasD.Contains(pergunta) && ((List<string>)perguntasD[pergunta]).Count != 0;
         }
         #endregion
-
     }
 }

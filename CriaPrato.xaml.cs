@@ -1,12 +1,13 @@
-﻿using System.Windows;
+﻿using System.Collections.Specialized;
+using System.Windows;
 
 namespace JogoGourmet
 {
     public partial class CriaPrato : Window
     {
-        private Dictionary<string, List<string>> perguntasD;
+        private OrderedDictionary perguntasD = new OrderedDictionary();
         MainWindow parent;
-        public CriaPrato(MainWindow caller, Dictionary<string, List<string>> perguntas)
+        public CriaPrato(MainWindow caller, OrderedDictionary perguntas)
         {
             InitializeComponent();
             DefaultMessage.Content = "Qual prato você pensou?";
