@@ -26,28 +26,6 @@ namespace JogoGourmet
                 txtPergunta.Text = keys[0];
             }
         }
-
-        private void VerificarVinculo()
-        {
-            if (VerificarVinculoExistente(txtPergunta.Text))
-            {
-                this.Hide();
-                Confirm perguntaForm = new(parent, perguntasD, txtPergunta.Text, true);
-                perguntaForm.Show();
-            }
-            else
-            {
-                this.Hide();
-                Acerto adicionaForm = new(parent);
-                adicionaForm.Show();
-            }
-        }
-
-        private bool VerificarVinculoExistente(string pergunta)
-        {
-            return perguntasD.ContainsKey(pergunta) && perguntasD[pergunta].Any();
-        }
-
         private void btnSim_Click(object sender, RoutedEventArgs e)
         {
             VerificarVinculo();
@@ -77,5 +55,29 @@ namespace JogoGourmet
                 }
             }
         }
+
+        #region VerificarVinculo
+        private void VerificarVinculo()
+        {
+            if (VerificarVinculoExistente(txtPergunta.Text))
+            {
+                this.Hide();
+                Confirm perguntaForm = new(parent, perguntasD, txtPergunta.Text, true);
+                perguntaForm.Show();
+            }
+            else
+            {
+                this.Hide();
+                Acerto adicionaForm = new(parent);
+                adicionaForm.Show();
+            }
+        }
+
+        private bool VerificarVinculoExistente(string pergunta)
+        {
+            return perguntasD.ContainsKey(pergunta) && perguntasD[pergunta].Any();
+        }
+        #endregion 
+        
     }
 }
