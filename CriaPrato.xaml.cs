@@ -26,5 +26,11 @@ namespace JogoGourmet
             this.Close();
             parent.Show();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ComparaPrato inicioForm = new(parent, perguntasD, alimentoEscolhido.Text);
+            inicioForm.Show();
+        }
     }
 }
