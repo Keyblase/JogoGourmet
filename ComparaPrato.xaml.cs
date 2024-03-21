@@ -15,20 +15,26 @@ namespace JogoGourmet
             perguntasD = perguntas;
             comidaEscolhida = comida;
 
-            CompareMessage.Content = $"{comida} é ___________ mas Bolo de Chocolate não.";
+            CompareMessage.Content = $"{(!string.IsNullOrEmpty(comida) ? comida : "null")} é ___________ mas Bolo de Chocolate não.";
             parent = caller;
         }
 
         private void ResponseButton_Click(object sender, RoutedEventArgs e)
         {
-            perguntasD.Add($"O prato que pensou é {txtNomeVinculoAlimento.Text}?", new List<string>() { comidaEscolhida });
-            this.Close();
+            perguntasD.Add($"O prato que pensou é {(!string.IsNullOrEmpty(txtNomeVinculoAlimento.Text) ? txtNomeVinculoAlimento.Text : "null")}?", new List<string>() { (!string.IsNullOrEmpty(comidaEscolhida) ? comidaEscolhida : "null") });
+            this.Hide();
             parent.Show();
         }
 
         private void ResponseCancelarButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            perguntasD.Add($"O prato que pensou é {(!string.IsNullOrEmpty(txtNomeVinculoAlimento.Text) ? txtNomeVinculoAlimento.Text : "null")}?", new List<string>() { (!string.IsNullOrEmpty(comidaEscolhida) ? comidaEscolhida : "null") });
+            this.Hide();
+            parent.Show();
+        }
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            perguntasD.Add($"O prato que pensou é {(!string.IsNullOrEmpty(txtNomeVinculoAlimento.Text) ? txtNomeVinculoAlimento.Text : "null")}?", new List<string>() { (!string.IsNullOrEmpty(comidaEscolhida) ? comidaEscolhida : "null") });
             parent.Show();
         }
     }

@@ -16,15 +16,16 @@ namespace JogoGourmet
 
         private void ResponseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.Hide();
             ComparaPrato inicioForm = new(parent,perguntasD, alimentoEscolhido.Text);
             inicioForm.Show();
         }
 
         private void ResponseCancelaButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            parent.Show();
+            this.Hide();
+            ComparaPrato inicioForm = new(parent, perguntasD, alimentoEscolhido.Text);
+            inicioForm.Show();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

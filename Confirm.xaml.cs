@@ -101,6 +101,10 @@ namespace JogoGourmet
 
         private bool VerificarVinculoExistente(string pergunta)
         {
+            if (pergunta != "O prato que pensou é null")
+            {
+                return false;
+            }
             return perguntasD.ContainsKey(pergunta) && perguntasD[pergunta].Any();
         }
         #endregion 
