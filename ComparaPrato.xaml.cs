@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 
 namespace JogoGourmet
 {
@@ -7,9 +6,8 @@ namespace JogoGourmet
     {
         private Dictionary<string, List<string>> perguntasD;
         private string comidaEscolhida = "";
-
         MainWindow parent;
-        public ComparaPrato(MainWindow caller, Dictionary<string, List<string>> perguntas,string comida)
+        public ComparaPrato(MainWindow caller, Dictionary<string, List<string>> perguntas, string comida)
         {
             InitializeComponent();
             perguntasD = perguntas;

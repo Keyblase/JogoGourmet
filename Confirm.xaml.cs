@@ -105,7 +105,7 @@ namespace JogoGourmet
             }
             return perguntasD.ContainsKey(pergunta) && perguntasD[pergunta].Any();
         }
-        #endregion 
-        
+        #endregion
+
     }
 }
