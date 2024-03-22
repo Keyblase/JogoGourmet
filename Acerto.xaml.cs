@@ -4,7 +4,7 @@ namespace JogoGourmet
 {
     public partial class Acerto : Window
     {
-        MainWindow parent;
+        readonly MainWindow parent;
         public Acerto(MainWindow caller)
         {
             InitializeComponent();

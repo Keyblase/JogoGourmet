@@ -7,7 +7,7 @@ namespace JogoGourmet
     {
         private OrderedDictionary perguntasD = new OrderedDictionary();
         private string comidaEscolhida = "";
-        MainWindow parent;
+        readonly MainWindow parent;
 
         public ComparaPrato(MainWindow caller, OrderedDictionary perguntas, string comida)
         {

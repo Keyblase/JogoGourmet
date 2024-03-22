@@ -21,7 +21,7 @@ namespace JogoGourmet
 
         private void InitializeDictionary()
         {
-            dictionary.Add("O prato que pensou é Massa?", new List<string> { "Lasanha" });
+            dictionary.Add("O prato que pensou é massa?", new List<string> { "Lasanha" });
             dictionary.Add("O prato que pensou é Bolo de chocolate?", new List<string>());
         }
 

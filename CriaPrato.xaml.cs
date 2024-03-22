@@ -5,8 +5,8 @@ namespace JogoGourmet
 {
     public partial class CriaPrato : Window
     {
-        private OrderedDictionary perguntasD = new OrderedDictionary();
-        MainWindow parent;
+        private OrderedDictionary perguntasD;
+        readonly MainWindow parent;
         public CriaPrato(MainWindow caller, OrderedDictionary perguntas)
         {
             InitializeComponent();

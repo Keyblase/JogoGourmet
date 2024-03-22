@@ -9,7 +9,7 @@ namespace JogoGourmet
         private OrderedDictionary perguntasD;
         private List<string> valoresAssociados;
         private int indiceAtual = 0;
-        private MainWindow parent;
+        private readonly MainWindow parent;
         private bool mostrandoValores = false;
 
         public Confirm(MainWindow caller, OrderedDictionary perguntas)
