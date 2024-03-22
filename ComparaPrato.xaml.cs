@@ -41,13 +41,10 @@ namespace JogoGourmet
 
         public void AdicionaVinculoPrato()
         {
-            // Primeiro, remova a última chave (Bolo de chocolate) para adicionar o novo elemento no meio
             perguntasD.RemoveAt(perguntasD.Count - 1);
 
-            // Adicione o novo elemento
             perguntasD.Add($"O prato que pensou é {(!string.IsNullOrEmpty(txtNomeVinculoAlimento.Text) ? txtNomeVinculoAlimento.Text : "null")}?", new List<string>() { (!string.IsNullOrEmpty(comidaEscolhida) ? comidaEscolhida : "null") });
 
-            // Re-adicione a chave do Bolo de chocolate no final
             perguntasD.Add("O prato que pensou é Bolo de chocolate?", new List<string>());
         }
     }

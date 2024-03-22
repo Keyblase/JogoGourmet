@@ -60,7 +60,7 @@ namespace JogoGourmet
 
         private void btnSim_Click(object sender, RoutedEventArgs e)
         {
-            if (!mostrandoValores && perguntasD.Contains(txtPergunta.Text as object) && ((List<string>)perguntasD[txtPergunta.Text]).Any())
+            if (!mostrandoValores && perguntasD.Contains(txtPergunta.Text as object) && ((List<string>)perguntasD[txtPergunta.Text]).Count != 0)
             {
                 mostrandoValores = true;
                 valoresAssociados = (List<string>)perguntasD[txtPergunta.Text];
