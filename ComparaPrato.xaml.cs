@@ -1,18 +1,18 @@
-﻿using System.Collections.Specialized;
+﻿using JogoGourmet.Manager;
 using System.Windows;
 
 namespace JogoGourmet
 {
     public partial class ComparaPrato : Window
     {
-        private OrderedDictionary perguntasD = new OrderedDictionary();
-        private string comidaEscolhida = "";
-        readonly MainWindow parent;
+        private readonly PratoManager pratoManager;
+        private readonly string comidaEscolhida;
+        private readonly MainWindow parent;
 
-        public ComparaPrato(MainWindow caller, OrderedDictionary perguntas, string comida)
+        public ComparaPrato(MainWindow caller, PratoManager manager, string comida)
         {
             InitializeComponent();
-            perguntasD = perguntas;
+            pratoManager = manager;
             comidaEscolhida = comida;
 
             CompareMessage.Content = $"{(!string.IsNullOrEmpty(comida) ? comida : "null")} é ___________ mas Bolo de Chocolate não.";
@@ -22,30 +22,40 @@ namespace JogoGourmet
         private void ResponseButton_Click(object sender, RoutedEventArgs e)
         {
             AdicionaVinculoPrato();
-            this.Hide();
-            parent.Show();
+            FecharComparaPrato();
         }
 
         private void ResponseCancelarButton_Click(object sender, RoutedEventArgs e)
         {
             AdicionaVinculoPrato();
-            this.Hide();
-            parent.Show();
+            FecharComparaPrato();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             AdicionaVinculoPrato();
-            parent.Show();
+            FecharComparaPrato();
         }
 
-        public void AdicionaVinculoPrato()
+        private void AdicionaVinculoPrato()
         {
-            perguntasD.RemoveAt(perguntasD.Count - 1);
+            string novoVinculo = txtNomeVinculoAlimento.Text;
+            if (string.IsNullOrEmpty(novoVinculo))
+            {
+                novoVinculo = "null";
+            }
 
-            perguntasD.Add($"O prato que pensou é {(!string.IsNullOrEmpty(txtNomeVinculoAlimento.Text) ? txtNomeVinculoAlimento.Text : "null")}?", new List<string>() { (!string.IsNullOrEmpty(comidaEscolhida) ? comidaEscolhida : "null") });
+            pratoManager.RemoverUltimaPergunta();
+            pratoManager.AdicionarPergunta($"O prato que pensou é {novoVinculo}?", new List<string> { comidaEscolhida ?? "null" });
+            pratoManager.AdicionarPergunta("O prato que pensou é Bolo de chocolate?", new List<string>());
+        }
 
-            perguntasD.Add("O prato que pensou é Bolo de chocolate?", new List<string>());
+        private void FecharComparaPrato()
+        {
+            this.Hide();
+            parent.Show();
+            pratoManager.ResetPerguntaIndex();
         }
     }
 }
+

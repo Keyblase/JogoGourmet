@@ -1,17 +1,17 @@
-﻿using System.Collections.Specialized;
+﻿using JogoGourmet.Manager;
 using System.Windows;
 
 namespace JogoGourmet
 {
     public partial class MainWindow : Window
     {
-        private OrderedDictionary dictionary = new OrderedDictionary();
+        private PratoManager pratoManager;
 
         public MainWindow()
         {
             InitializeComponent();
             LoadMessages();
-            InitializeDictionary();
+            pratoManager = new PratoManager();
         }
 
         private void LoadMessages()
@@ -19,15 +19,9 @@ namespace JogoGourmet
             InitialMessage.Content = "Pense em um prato que gosta";
         }
 
-        private void InitializeDictionary()
-        {
-            dictionary.Add("O prato que pensou é massa?", new List<string> { "Lasanha" });
-            dictionary.Add("O prato que pensou é Bolo de chocolate?", new List<string>());
-        }
-
         private void ResponseButton_Click(object sender, RoutedEventArgs e)
         {
-            Confirm perguntaForm = new Confirm(this, dictionary);
+            Confirm perguntaForm = new Confirm(this, pratoManager);
             this.Hide();
             perguntaForm.Show();
         }

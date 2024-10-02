@@ -1,17 +1,17 @@
-﻿using System.Collections.Specialized;
+﻿using JogoGourmet.Manager;
 using System.Windows;
 
 namespace JogoGourmet
 {
     public partial class CriaPrato : Window
     {
-        private OrderedDictionary perguntasD;
+        private PratoManager pratoManager;
         readonly MainWindow parent;
-        public CriaPrato(MainWindow caller, OrderedDictionary perguntas)
+        public CriaPrato(MainWindow caller, PratoManager pratoManager)
         {
             InitializeComponent();
             DefaultMessage.Content = "Qual prato você pensou?";
-            perguntasD = perguntas;
+            this.pratoManager = pratoManager;
             parent = caller;
         }
 
@@ -33,7 +33,7 @@ namespace JogoGourmet
         }
         public void AdicionaVinculoPrato()
         {
-            ComparaPrato inicioForm = new(parent, perguntasD, alimentoEscolhido.Text);
+            ComparaPrato inicioForm = new(parent, pratoManager, alimentoEscolhido.Text);
             inicioForm.Show();
         }
     }
