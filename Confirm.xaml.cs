@@ -43,7 +43,7 @@ namespace JogoGourmet
 
         private void btnSim_Click(object sender, RoutedEventArgs e)
         {
-            if (!mostrandoValores && pratoManager.ContainsPergunta(txtPergunta.Text) && pratoManager.GetValoresAssociados(txtPergunta.Text).Count != 0)
+            if (PodeMostrarValores())
             {
                 mostrandoValores = true;
                 valoresAssociados = pratoManager.GetValoresAssociados(txtPergunta.Text);
@@ -54,7 +54,11 @@ namespace JogoGourmet
             }
             MostrarPerguntaAtual();
         }
-
+        private bool PodeMostrarValores()
+        {
+            return !mostrandoValores && pratoManager.ContainsPergunta(txtPergunta.Text) &&
+                   pratoManager.GetValoresAssociados(txtPergunta.Text).Count != 0;
+        }
         private void btnNao_Click(object sender, RoutedEventArgs? e)
         {
             if (mostrandoValores && valoresAssociados.Count > 1)
